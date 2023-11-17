@@ -10,6 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Animated Flower</title>
     <style>
+        /* Resetting default margin, padding, and box-sizing */
         *,
         *::after,
         *::before {
@@ -18,12 +19,14 @@
             box-sizing: border-box;
         }
 
+        /* Define CSS variables in the root for easy reuse */
         :root {
             --color-bg: linear-gradient(to top, #010329, #000005);
             --color-glass: linear-gradient(to left, #142544, #1a9092);
             --color-water: linear-gradient(to left, #142544, #1b6d6e);
         }
 
+        /* Styling for the body */
         body {
             background-image: var(--color-bg);
             min-height: 100vh;
@@ -31,12 +34,28 @@
             justify-content: center;
             align-items: flex-end;
             overflow: hidden;
+            position: relative; /* Relative positioning for absolute child elements */
         }
 
+        /* Message styling */
+        .message {
+            position: absolute;
+            top: 100px; /* Adjust the distance from the top */
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 4rem; /* Adjust the font size */
+            color: #c0bbc2; /* Use the color you want for the text */
+            background-image: var(--color-glass); /* Use the same gradient as leaves */
+            padding: 10px; /* Adjust padding as needed */
+            border-radius: 8px; /* Adjust border radius as needed */
+        }
+
+        /* Styling for the flower container */
         .flower {
             position: relative;
         }
 
+        /* Styling for the glass part of the flower */
         .flower__glass {
             width: 20vmin;
             height: 30vmin;
@@ -46,6 +65,7 @@
             position: relative;
         }
 
+        /* Styling for the top part of the glass */
         .flower__glass::after {
             content: '';
             position: absolute;
@@ -56,6 +76,7 @@
             height: 2vmin;
         }
 
+        /* Styling for the water part of the glass */
         .flower__glass::before {
             content: '';
             position: absolute;
@@ -66,6 +87,7 @@
             height: 15vmin;
         }
 
+        /* Styling for the flower wrappers */
         .f-wrapper {
             position: absolute;
             left: 45%;
@@ -86,6 +108,7 @@
             transform: rotate(-10deg);
         }
 
+        /* Styling for the flower lines */
         .f-wrapper--3 .flower__line {
             height: 45vmin;
             position: relative;
@@ -122,7 +145,6 @@
             background-image: linear-gradient(to top, #142544, #104d4e);
         }
 
-
         .f-wrapper--2 .flower__line {
             height: 45vmin;
         }
@@ -135,6 +157,7 @@
             transform: translate(-350%, -50%) rotate(-120deg);
         }
 
+        /* Styling for the flower leaves */
         .f-wrapper--2 .flower__leaf:not(:first-child) {
             width: 3.8vmin;
             height: 10vmin;
@@ -179,6 +202,7 @@
             ;
         }
 
+        /* Styling for common flower elements */
         .flower__line {
             width: 2vmin;
             height: 56vmin;
@@ -203,7 +227,6 @@
             width: 5vmin;
             height: 14vmin;
             background-image: linear-gradient(to bottom, #f0f0f0, #d8d8d8, #1a233a 99%);
-
             clip-path: ellipse(50% 50% at 50% 50%);
             transform-origin: center bottom;
             animation: open-flower 2s 1s backwards;
@@ -255,6 +278,7 @@
             background-image: linear-gradient(to left bottom, #f0f0f0, #e6e6e6, #1a233a 98%);
         }
 
+        /* Falling animations for different flower colors */
         .flower__fall-down--yellow {
             animation: flower-fall-down-yellow 8s 1.2s linear forwards;
         }
@@ -268,13 +292,14 @@
             animation: flower-fall-down-purple 6s 1.2s linear forwards, flower-falling 6s 7.2s linear infinite;
         }
 
-
+        /* Keyframes for opening flower */
         @keyframes open-flower {
             0% {
                 transform: translateX(-50%) rotate(0);
             }
         }
 
+        /* Keyframes for the middle part of the flower */
         @keyframes open-flowe--middle {
             0% {
                 opacity: 0;
@@ -282,66 +307,55 @@
             }
         }
 
+        /* Keyframes for pink falling flower */
         @keyframes flower-fall-down-pink {
-
             0% {
                 transform: rotate(-55deg);
             }
-
             50% {
                 transform: rotateX(-100deg);
             }
-
             100% {
                 transform: translate(2vmin, 28vmin);
             }
-
         }
 
+        /* Keyframes for yellow falling flower */
         @keyframes flower-fall-down-yellow {
-
             0% {
                 transform: rotate(-55deg);
             }
-
             50% {
                 bottom: 3vmin;
                 transform: rotateX(-100deg);
             }
-
             100% {
                 transform: translate(2vmin, 70vmin) rotate(150deg);
             }
-
         }
 
+        /* Keyframes for purple falling flower */
         @keyframes flower-fall-down-purple {
-
             0% {
                 transform: rotate(-50deg);
             }
-
             25% {
                 bottom: 1vmin;
                 transform: rotateX(-100deg);
                 perspective: 0px;
             }
-
             50% {
                 perspective: 0px;
                 transform: translate(-30vmin, 2vmin) rotate(90deg);
             }
-
             75% {
                 perspective: 0px;
                 transform: translate(-34vmin, -2vmin);
             }
-
             100% {
                 transform-origin: center;
                 transform: translate(-34vmin, -2vmin) rotateY(-80deg) rotateX(35deg);
             }
-
         }
 
         @keyframes flower-falling {
@@ -367,10 +381,38 @@
                 transform: translate(-36vmin, 1.1vmin) rotateY(-80deg) rotateX(35deg);
             }
         }
+
+        body {
+            background-image: var(--color-bg);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            overflow: hidden;
+            position: relative; /* Added position relative */
+        }
+
+        .message {
+            position: absolute;
+            top: 100px; /* Adjust the distance from the top */
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 4rem; /* Adjust the font size */
+            color: #c0bbc2; /* Use the color you want for the text */
+            background-image: var(--color-glass); /* Use the same gradient as leaves */
+            padding: 10px; /* Adjust padding as needed */
+            border-radius: 8px; /* Adjust border radius as needed */
+        }
+
+
+
     </style>
 </head>
 
 <body>
+    <div class="message">Here you go Bippy</div>
+
+
     <div class="flower">
         <div class="f-wrapper">
             <div class="flower__line"></div>
